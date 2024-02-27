@@ -1,4 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LogIn extends StatefulWidget {
@@ -53,24 +57,109 @@ class _LogInState extends State<LogIn> {
                 const SizedBox(
                   height: 30,
                 ),
-                // Expanded(
-                //   child: Container(
-                //     height: 400,
-                //     decoration: BoxDecoration(color: Colors.grey),
-                //   ),
-                // )
               ],
             ),
           ),
           Expanded(
             child: Container(
-              height: 400,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
-            ),
+                height: 400,
+                width: 800,
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 24, 29, 53),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10))),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, top: 20, right: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Login",
+                            style: TextStyle(
+                                fontSize: 27, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            "Username",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const TextField(
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white38,
+                                contentPadding: EdgeInsets.all(10),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)))),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            "Password",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const TextField(
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white38,
+                                contentPadding: EdgeInsets.all(10),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)))),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          SizedBox(
+                            height: 45,
+                            width: 400,
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)))),
+                                onPressed: () {},
+                                child: const Text("Login",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold))),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Center(
+                            child: RichText(
+                                text: const TextSpan(children: [
+                              TextSpan(text: "Don't have an account?"),
+                              TextSpan(
+                                  text: " Register Here",
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline))
+                            ])),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                )),
           )
         ],
       ),
