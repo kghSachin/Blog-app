@@ -1,3 +1,4 @@
+import 'package:chiya_startup/pages/log_in.dart';
 import 'package:chiya_startup/pages/main_page.dart';
 import 'package:chiya_startup/theme/my_theme.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: myDarkTheme,
-      home: const MainPage(),
+      home: const LogIn(),
     );
   }
 }
