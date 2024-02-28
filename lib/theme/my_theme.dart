@@ -4,74 +4,79 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData myDarkTheme = ThemeData.dark(
   useMaterial3: true,
 ).copyWith(
-  scaffoldBackgroundColor: const Color(0xFF020617),
-  appBarTheme: const AppBarTheme(
-    // elevation: 3,
-    elevation: 0,
-    backgroundColor: Color(0xFF020617),
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(
-      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-      backgroundColor:
-          MaterialStateProperty.all<Color>(const Color(0xFF464F60)),
+    scaffoldBackgroundColor: const Color(0xFF020617),
+    appBarTheme: const AppBarTheme(
+      // elevation: 3,
+      elevation: 0,
+      backgroundColor: Color(0xFF020617),
     ),
-  ),
-  textTheme: TextTheme(
-    displayLarge: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF464F60)),
+      ),
     ),
-    displayMedium: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
+    textTheme: TextTheme(
+      displayLarge: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      displayMedium: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      displaySmall: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      headlineLarge: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      headlineMedium: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      headlineSmall: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      titleLarge: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      titleMedium: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      titleSmall: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      bodyLarge: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      bodyMedium: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      bodySmall: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      labelLarge: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      labelMedium: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+      labelSmall: TextStyle(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
     ),
-    displaySmall: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
+    buttonTheme: const ButtonThemeData(
+      // highlightColor: Color(0xFFE0E7FF),
+      buttonColor: Color(0xFFE0E7FF),
+      textTheme: ButtonTextTheme.primary,
     ),
-    headlineLarge: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    headlineMedium: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    headlineSmall: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    titleLarge: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    titleMedium: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    titleSmall: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    bodyLarge: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    bodyMedium: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    bodySmall: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    labelLarge: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    labelMedium: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-    labelSmall: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
-    ),
-  ),
-  buttonTheme: const ButtonThemeData(
-    // highlightColor: Color(0xFFE0E7FF),
-    buttonColor: Color(0xFFE0E7FF),
-    textTheme: ButtonTextTheme.primary,
-  ),
-  colorScheme: const ColorScheme.dark(),
-  // scaffoldBackgroundColor: const Color(0xFF0F172A),
-);
+    colorScheme: const ColorScheme.dark(),
+    inputDecorationTheme: InputDecorationTheme(
+        focusColor: Colors.white,
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.white)))
+
+    // scaffoldBackgroundColor: const Color(0xFF0F172A),
+    );
 
 ThemeData myLightTheme = ThemeData.light(
   useMaterial3: true,

@@ -16,57 +16,57 @@ class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 70,
-          ),
-          Center(
-            child: Column(
-              children: [
-                const CircleAvatar(
-                  radius: 70,
-                  child: Image(
-                    image: AssetImage(
-                      "images/chiyaapp.png",
-                    ),
-                    alignment: Alignment.center,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 20),
-                  child: Text(
-                    "Unveiling The Tales Of Nepali Entrepreneurs, One Story At A Time.",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      fontFamily: GoogleFonts.roboto().fontFamily,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Divider(color: Colors.grey),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 70,
             ),
-          ),
-          Expanded(
-            child: Container(
+            Center(
+              child: Column(
+                children: [
+                  const CircleAvatar(
+                    radius: 70,
+                    child: Image(
+                      image: AssetImage(
+                        "images/chiyaapp.png",
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 20),
+                    child: Text(
+                      "Unveiling The Tales Of Nepali Entrepreneurs, One Story At A Time.",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                        fontFamily: GoogleFonts.roboto().fontFamily,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Divider(color: Colors.grey),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+            Container(
                 height: 400,
                 width: 800,
-                decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 24, 29, 53),
-                    borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10))),
                 child: Column(
@@ -159,9 +159,9 @@ class _LogInState extends State<LogIn> {
                       ),
                     )
                   ],
-                )),
-          )
-        ],
+                ))
+          ],
+        ),
       ),
     );
   }
