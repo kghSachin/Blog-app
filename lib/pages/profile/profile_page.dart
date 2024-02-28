@@ -74,6 +74,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 height: 24,
               ),
               Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(8)),
