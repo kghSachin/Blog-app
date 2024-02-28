@@ -4,79 +4,83 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData myDarkTheme = ThemeData.dark(
   useMaterial3: true,
 ).copyWith(
-    scaffoldBackgroundColor: const Color(0xFF020617),
-    appBarTheme: const AppBarTheme(
-      // elevation: 3,
-      elevation: 0,
-      backgroundColor: Color(0xFF020617),
+  primaryColor: const Color(0xFF020617),
+  scaffoldBackgroundColor: const Color(0xFF020617),
+  appBarTheme: const AppBarTheme(
+    // elevation: 3,
+    elevation: 0,
+    backgroundColor: Color(0xFF020617),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      backgroundColor:
+          MaterialStateProperty.all<Color>(const Color(0xFF464F60)),
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF464F60)),
-      ),
+  ),
+  textTheme: TextTheme(
+    displayLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
     ),
-    textTheme: TextTheme(
-      displayLarge: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      displayMedium: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      displaySmall: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      headlineLarge: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      headlineMedium: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      headlineSmall: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      titleLarge: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      titleMedium: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      bodyLarge: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      bodyMedium: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      bodySmall: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      labelLarge: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      labelMedium: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
-      labelSmall: TextStyle(
-        fontFamily: GoogleFonts.roboto().fontFamily,
-      ),
+    displayMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
     ),
-    buttonTheme: const ButtonThemeData(
-      // highlightColor: Color(0xFFE0E7FF),
-      buttonColor: Color(0xFFE0E7FF),
-      textTheme: ButtonTextTheme.primary,
+    displaySmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
     ),
-    colorScheme: const ColorScheme.dark(),
-    inputDecorationTheme: InputDecorationTheme(
-        focusColor: Colors.white,
-        focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.white)))
-
-    // scaffoldBackgroundColor: const Color(0xFF0F172A),
-    );
+    headlineLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    headlineMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    headlineSmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    titleLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    labelLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    labelMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    labelSmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+  ),
+  buttonTheme: const ButtonThemeData(
+    // highlightColor: Color(0xFFE0E7FF),
+    buttonColor: Color(0xFFE0E7FF),
+    textTheme: ButtonTextTheme.primary,
+  ),
+  colorScheme: const ColorScheme.dark(),
+  splashColor: Colors.black.withOpacity(0.5),
+  listTileTheme: const ListTileThemeData(style: ListTileStyle.list),
+  // rgba(9, 15, 32, 1)
+  cardColor: const Color.fromRGBO(9, 15, 32, 1),
+  inputDecorationTheme: const InputDecorationTheme(
+      focusColor: Colors.white,
+      focusedBorder:
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+  // scaffoldBackgroundColor: const Color(0xFF0F172A),
+);
 
 ThemeData myLightTheme = ThemeData.light(
   useMaterial3: true,
@@ -90,6 +94,7 @@ ThemeData myLightTheme = ThemeData.light(
     elevation: 3,
     backgroundColor: Color(0xFFC5CFDB),
   ),
+  cardColor: Colors.white.withOpacity(0.9),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -111,6 +116,59 @@ ThemeData myLightTheme = ThemeData.light(
       ),
     ),
   ),
+  textTheme: TextTheme(
+    displayLarge: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    displayMedium: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    displaySmall: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    headlineLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    headlineMedium: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+      fontWeight: FontWeight.w500,
+    ),
+    headlineSmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    titleLarge: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    labelLarge: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    labelMedium: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+    labelSmall: TextStyle(
+      fontFamily: GoogleFonts.roboto().fontFamily,
+    ),
+  ),
   buttonTheme: const ButtonThemeData(
     buttonColor: Colors.green,
     shape: RoundedRectangleBorder(
@@ -123,5 +181,5 @@ ThemeData myLightTheme = ThemeData.light(
   colorScheme: const ColorScheme.light().copyWith(
     secondary: const Color(0xFF312E81),
   ),
-  scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+  scaffoldBackgroundColor: Colors.white,
 );
