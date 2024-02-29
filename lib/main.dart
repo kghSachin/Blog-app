@@ -1,5 +1,3 @@
-import 'package:chiya_startup/helper/shimmer/shimmer_effect.dart';
-import 'package:chiya_startup/pages/auth/log_in.dart';
 import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:chiya_startup/state/theme_provider.dart';
 import 'package:chiya_startup/theme/my_theme.dart';
