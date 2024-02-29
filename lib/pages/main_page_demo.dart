@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MainPage extends ConsumerStatefulWidget {
-  const MainPage({super.key});
+class MainPageDemo extends ConsumerStatefulWidget {
+  const MainPageDemo({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => MainPageState();
 }
 
-class MainPageState extends ConsumerState<MainPage>
+class MainPageState extends ConsumerState<MainPageDemo>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
