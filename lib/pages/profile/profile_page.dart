@@ -13,7 +13,6 @@ class ProfilePage extends ConsumerStatefulWidget {
 }
 
 class _ProfilePageState extends ConsumerState<ProfilePage> {
-  bool value = false;
   @override
   Widget build(BuildContext context) {
     ref.watch(themeProvider);
@@ -86,15 +85,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("My Posts"),
-                        leading: SvgPicture.asset(
-                          "assets/icons/navbar/bookmark_filled.svg",
-                          colorFilter: ColorFilter.mode(
-                              Theme.of(context).indicatorColor,
-                              BlendMode.srcATop),
+                        leading: const Icon(
+                          Icons.image_outlined,
+                          size: 24,
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
-                          size: 18,
+                          size: 16,
                         ),
                       ),
                     ),
@@ -107,15 +104,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("Draft Posts"),
-                        leading: SvgPicture.asset(
-                          "assets/icons/profile/draft.svg",
-                          colorFilter: ColorFilter.mode(
-                              Theme.of(context).indicatorColor,
-                              BlendMode.srcATop),
+                        leading: const Icon(
+                          Icons.article_outlined,
+                          size: 24,
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
-                          size: 18,
+                          size: 16,
                         ),
                       ),
                     ),
@@ -128,10 +123,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("History"),
-                        leading: const Icon(Icons.history),
+                        leading: const Icon(
+                          Icons.history_outlined,
+                          size: 24,
+                        ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
-                          size: 18,
+                          size: 16,
                         ),
                       ),
                     ),
@@ -213,12 +211,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       child: ListTile(
                           tileColor: Theme.of(context).scaffoldBackgroundColor,
                           onTap: () {
-                            setState(() {
-                              value = !value;
-                              ref
-                                  .read(themeProvider.notifier)
-                                  .update((state) => value);
-                            });
+                            ref
+                                .read(themeProvider.notifier)
+                                .update((state) => !state);
                           },
                           title: const Text("Dark Mode"),
                           leading: const Icon(Icons.layers_outlined),
@@ -236,8 +231,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                 inactiveTrackColor:
                                     Colors.grey.withOpacity(0.5),
                                 thumbIcon: MaterialStateProperty.all(
-                                  value == false
+                                  ref.watch(themeProvider) == false
                                       ? const Icon(
+                                          weight: 5,
                                           Icons.light_mode_outlined,
                                           color: Colors.white,
                                         )
@@ -248,14 +244,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                 ),
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.shrinkWrap,
-                                value: value,
+                                value: ref.watch(themeProvider),
                                 onChanged: (val) {
-                                  setState(() {
-                                    value = val;
-                                    ref
-                                        .read(themeProvider.notifier)
-                                        .update((state) => value);
-                                  });
+                                  ref
+                                      .read(themeProvider.notifier)
+                                      .update((state) => !state);
                                 }),
                           )),
                     ),
@@ -295,7 +288,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("Discord"),
-                        leading: const Icon(Icons.disc_full),
+                        leading: SvgPicture.asset(
+                          "assets/icons/profile/discord.svg",
+                          colorFilter: ColorFilter.mode(
+                              Theme.of(context).indicatorColor,
+                              BlendMode.srcATop),
+                        ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 18,
@@ -327,7 +325,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("Twitter"),
-                        leading: const Icon(Icons.baby_changing_station),
+                        leading: SvgPicture.asset(
+                          height: 18,
+                          width: 18,
+                          "assets/icons/profile/twitter.svg",
+                          colorFilter: ColorFilter.mode(
+                              Theme.of(context).indicatorColor,
+                              BlendMode.srcATop),
+                        ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 18,
@@ -340,10 +345,19 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ),
                     Material(
                       child: ListTile(
+                        contentPadding:
+                            const EdgeInsets.only(left: 8, right: 24),
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("LinkedIn"),
-                        leading: const Icon(Icons.link_outlined),
+                        leading: SvgPicture.asset(
+                          height: 28,
+                          width: 28,
+                          "assets/icons/profile/linkedin.svg",
+                          colorFilter: ColorFilter.mode(
+                              Theme.of(context).indicatorColor,
+                              BlendMode.srcATop),
+                        ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 18,
@@ -365,13 +379,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     tileColor: Theme.of(context).scaffoldBackgroundColor,
                     splashColor: Colors.black.withOpacity(0.5),
                     onTap: () {},
-                    title: const Text(
+                    title: Text(
                       "Logout",
-                      style: TextStyle(color: Colors.red),
+                      style: TextStyle(color: Colors.red.withOpacity(0.8)),
                     ),
-                    leading: const Icon(
-                      Icons.logout,
-                      color: Colors.red,
+                    leading: SvgPicture.asset(
+                      "assets/icons/profile/logout.svg",
+                      colorFilter:
+                          const ColorFilter.mode(Colors.red, BlendMode.srcATop),
                     ),
                   ),
                 ),

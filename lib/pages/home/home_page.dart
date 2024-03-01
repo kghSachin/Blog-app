@@ -99,19 +99,30 @@ class MainPageState extends ConsumerState<HomePage>
                     padding: const EdgeInsets.only(top: 8, bottom: 0.2),
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom:
-                            BorderSide(color: Theme.of(context).indicatorColor),
-                        top:
-                            BorderSide(color: Theme.of(context).indicatorColor),
+                        bottom: BorderSide(
+                            width: 1, color: Colors.blueGrey.withOpacity(0.5)),
+                        top: BorderSide(
+                            width: 1, color: Colors.blueGrey.withOpacity(0.5)),
                       ),
                     ),
                     child: TabBar(
                         labelPadding: const EdgeInsets.all(6),
+                        unselectedLabelColor: Colors.grey,
+                        unselectedLabelStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        labelColor: Colors.blue,
+                        labelStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                         // isScrollable: true,
                         // tabAlignment: TabAlignment.start,
-                        indicatorColor: Theme.of(context).colorScheme.primary,
+                        indicatorColor: Colors.blue,
                         indicatorSize: TabBarIndicatorSize.tab,
                         indicatorWeight: 2.2,
+                        dividerColor: Colors.transparent,
                         indicatorPadding: const EdgeInsets.only(
                           left: 8,
                           right: 8,

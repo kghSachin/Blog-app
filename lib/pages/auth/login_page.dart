@@ -56,7 +56,6 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             Container(
-                height: 400,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
@@ -118,7 +117,7 @@ class _LogInState extends State<LogIn> {
                                         BorderRadius.all(Radius.circular(5)))),
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 40,
                           ),
                           SizedBox(
                             height: 50,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData myDarkTheme = ThemeData.dark(
@@ -115,6 +116,7 @@ ThemeData myLightTheme = ThemeData.light(
     ),
   ),
   appBarTheme: const AppBarTheme(
+    surfaceTintColor: Colors.white,
     elevation: 3,
     backgroundColor: Color(0xFFC5CFDB),
   ),

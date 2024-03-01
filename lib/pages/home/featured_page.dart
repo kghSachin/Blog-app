@@ -1,3 +1,4 @@
+import 'package:chiya_startup/pages/home/home_card.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedPage extends StatefulWidget {
@@ -11,32 +12,8 @@ class _FeaturedPageState extends State<FeaturedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                color: Theme.of(context).cardColor,
-              ),
-              Container(
-                height: 200,
-                color: Theme.of(context).cardColor,
-              ),
-              Container(
-                height: 200,
-                color: Theme.of(context).cardColor,
-              ),
-              Container(
-                height: 200,
-                color: Theme.of(context).cardColor,
-              ),
-              Container(
-                height: 200,
-                color: Theme.of(context).cardColor,
-              )
-            ],
-          ),
-        ));
+      child: HomeCard(),
+    ));
   }
 }
