@@ -1,59 +1,73 @@
+import 'package:chiya_startup/pages/auth/log_in.dart';
+import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class MainPage extends ConsumerWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  int selectedIndex = 0;
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("My Feed"),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.create_outlined,
-              )),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notification_add_outlined),
-          ),
+      body: IndexedStack(
+        index: selectedIndex,
+        children: const [
+          LogIn(),
+          LogIn(),
+          ProfilePage(),
         ],
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            floating: true,
-            expandedHeight: 150.0,
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon:const Icon(Icons.add),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (value) {
+            setState(() {
+              selectedIndex = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: SvgPicture.asset(
+                selectedIndex == 0
+                    ? "assets/icons/navbar/home_filled.svg"
+                    : "assets/icons/navbar/home.svg",
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 0 ? Colors.blueGrey : Colors.grey,
+                  BlendMode.srcATop,
+                ),
               ),
-            ],
-            automaticallyImplyLeading: false,
-            flexibleSpace: const FlexibleSpaceBar(
-              title: Text('Demo'),
-              centerTitle: true,
             ),
-            title:const Text("this is title"),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  height: 100,
-                  color: Colors.amber[600],
-                  child: Center(child: Text('Item $index')),
-                );
-              },
-              childCount: 20,
+            BottomNavigationBarItem(
+              label: "Search",
+              icon: SvgPicture.asset(
+                selectedIndex == 1
+                    ? "assets/icons/navbar/search_filled.svg"
+                    : "assets/icons/navbar/search.svg",
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 1 ? Colors.blueGrey : Colors.grey,
+                  BlendMode.srcATop,
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
+            BottomNavigationBarItem(
+              label: "Bookmarks",
+              icon: SvgPicture.asset(
+                selectedIndex == 2
+                    ? "assets/icons/navbar/bookmark_filled.svg"
+                    : "assets/icons/navbar/bookmark.svg",
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 2 ? Colors.blueGrey : Colors.grey,
+                  BlendMode.srcATop,
+                ),
+              ),
+            )
+          ]),
     );
   }
 }

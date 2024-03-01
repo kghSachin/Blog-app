@@ -39,7 +39,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     backgroundColor: Colors.pinkAccent,
                     child: Center(
                       child: Text(
-                        "SB",
+                        "SD",
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ),
@@ -51,7 +51,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Sachin Basnet",
+                        "Sumit Dhakal",
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge
@@ -61,7 +61,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         height: 2,
                       ),
                       Text(
-                        "@KghSachin",
+                        "@dhakalsumit06",
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: Colors.grey,
                             ),

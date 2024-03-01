@@ -1,5 +1,7 @@
-import 'package:chiya_startup/helper/shimmer/shimmer_effect.dart';
+import 'package:chiya_startup/example/video_player_example.dart';
 import 'package:chiya_startup/pages/auth/log_in.dart';
+import 'package:chiya_startup/pages/auth/register.dart';
+import 'package:chiya_startup/pages/main_page.dart';
 import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:chiya_startup/state/theme_provider.dart';
 import 'package:chiya_startup/theme/my_theme.dart';
@@ -20,7 +22,14 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: themeMode == true ? myDarkTheme : myLightTheme,
-      home: ProfilePage(),
+      routes: {
+        "/": (context) => const MainPage(),
+        "profile": (context) => const ProfilePage(),
+        "login": (context) => const LogIn(),
+        "register": (context) => const RegisterPage(),
+        "video": (context) => const VideoApp()
+      },
+      // home: const MainPage(),
     );
   }
 }

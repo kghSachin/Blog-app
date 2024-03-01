@@ -31,7 +31,7 @@ class _LogInState extends State<LogIn> {
                     radius: 70,
                     child: Image(
                       image: AssetImage(
-                        "images/chiyaapp.png",
+                        "assets/images/chiyaapp.png",
                       ),
                       alignment: Alignment.center,
                     ),
@@ -42,12 +42,11 @@ class _LogInState extends State<LogIn> {
                   Padding(
                     padding: const EdgeInsets.only(left: 30, right: 20),
                     child: Text(
-                      "Unveiling The Tales Of Nepali Entrepreneurs, One Story At A Time.",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300,
-                        fontFamily: GoogleFonts.roboto().fontFamily,
-                      ),
+                      "Unveiling the tales of nepali entrepreneurs, One story at a time.",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.8,
+                          fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -63,7 +62,7 @@ class _LogInState extends State<LogIn> {
             ),
             Container(
                 height: 400,
-                width: 800,
+                width: double.infinity,
                 decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
                     borderRadius: const BorderRadius.only(
@@ -77,10 +76,9 @@ class _LogInState extends State<LogIn> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Login",
-                            style: TextStyle(
-                                fontSize: 27, fontWeight: FontWeight.bold),
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const SizedBox(
                             height: 20,
@@ -95,8 +93,8 @@ class _LogInState extends State<LogIn> {
                           ),
                           const TextField(
                             decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white38,
+                                // filled: true,
+                                // fillColor: Colors.white38,
                                 contentPadding: EdgeInsets.all(10),
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide.none,

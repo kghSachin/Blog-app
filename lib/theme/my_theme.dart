@@ -6,6 +6,7 @@ ThemeData myDarkTheme = ThemeData.dark(
 ).copyWith(
   primaryColor: const Color(0xFF020617),
   scaffoldBackgroundColor: const Color(0xFF020617),
+  indicatorColor: Colors.white,
   appBarTheme: const AppBarTheme(
     // elevation: 3,
     elevation: 0,
@@ -71,7 +72,26 @@ ThemeData myDarkTheme = ThemeData.dark(
     textTheme: ButtonTextTheme.primary,
   ),
   colorScheme: const ColorScheme.dark(),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      showSelectedLabels: false,
+      selectedLabelStyle: TextStyle(
+        color: Colors.white,
+        fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
+      ),
+      elevation: 3,
+      showUnselectedLabels: false,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.black,
+      selectedIconTheme: IconThemeData(
+        size: 28,
+        color: Colors.white,
+      ),
+      unselectedIconTheme: IconThemeData(
+        size: 30,
+        color: Colors.white,
+      )),
   splashColor: Colors.black.withOpacity(0.5),
+
   listTileTheme: const ListTileThemeData(style: ListTileStyle.list),
   // rgba(9, 15, 32, 1)
   cardColor: const Color.fromRGBO(9, 15, 32, 1),
@@ -94,7 +114,7 @@ ThemeData myLightTheme = ThemeData.light(
     elevation: 3,
     backgroundColor: Color(0xFFC5CFDB),
   ),
-  cardColor: Colors.white.withOpacity(0.9),
+  cardColor: const Color(0xFFf2f4f7),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -177,6 +197,18 @@ ThemeData myLightTheme = ThemeData.light(
       ),
     ),
     textTheme: ButtonTextTheme.accent,
+  ),
+  indicatorColor: Colors.black,
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    showSelectedLabels: false,
+    selectedLabelStyle: TextStyle(
+      color: Colors.white,
+      fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
+    ),
+    elevation: 2,
+    showUnselectedLabels: false,
+    type: BottomNavigationBarType.fixed,
+    backgroundColor: Colors.white,
   ),
   colorScheme: const ColorScheme.light().copyWith(
     secondary: const Color(0xFF312E81),
