@@ -1,9 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -31,7 +26,7 @@ class _LogInState extends State<LogIn> {
                     radius: 70,
                     child: Image(
                       image: AssetImage(
-                        "images/chiyaapp.png",
+                        "assets/images/chiyaapp.png",
                       ),
                       alignment: Alignment.center,
                     ),
@@ -42,12 +37,11 @@ class _LogInState extends State<LogIn> {
                   Padding(
                     padding: const EdgeInsets.only(left: 30, right: 20),
                     child: Text(
-                      "Unveiling The Tales Of Nepali Entrepreneurs, One Story At A Time.",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300,
-                        fontFamily: GoogleFonts.roboto().fontFamily,
-                      ),
+                      "Unveiling the tales of nepali entrepreneurs, One story at a time.",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.8,
+                          fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -63,7 +57,7 @@ class _LogInState extends State<LogIn> {
             ),
             Container(
                 height: 400,
-                width: 800,
+                width: double.infinity,
                 decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
                     borderRadius: const BorderRadius.only(
@@ -77,28 +71,26 @@ class _LogInState extends State<LogIn> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Login",
-                            style: TextStyle(
-                                fontSize: 27, fontWeight: FontWeight.bold),
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text(
-                            "Username",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w600),
-                          ),
+                          Text("Email or Username",
+                              style: Theme.of(context).textTheme.titleMedium),
                           const SizedBox(
                             height: 10,
                           ),
-                          const TextField(
+                          TextField(
                             decoration: InputDecoration(
+                                prefixIcon: const Icon(Icons.email_outlined),
+                                hintText: "Enter your email",
                                 filled: true,
-                                fillColor: Colors.white38,
-                                contentPadding: EdgeInsets.all(10),
-                                border: OutlineInputBorder(
+                                fillColor: Theme.of(context).focusColor,
+                                contentPadding: const EdgeInsets.all(10),
+                                border: const OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)))),
@@ -106,20 +98,21 @@ class _LogInState extends State<LogIn> {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text(
+                          Text(
                             "Password",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w600),
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                           const SizedBox(
                             height: 10,
                           ),
-                          const TextField(
+                          TextField(
                             decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.lock_outline),
                                 filled: true,
-                                fillColor: Colors.white38,
-                                contentPadding: EdgeInsets.all(10),
-                                border: OutlineInputBorder(
+                                fillColor: Theme.of(context).focusColor,
+                                hintText: "Enter your password",
+                                contentPadding: const EdgeInsets.all(10),
+                                border: const OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)))),
@@ -128,11 +121,10 @@ class _LogInState extends State<LogIn> {
                             height: 20,
                           ),
                           SizedBox(
-                            height: 45,
-                            width: 400,
+                            height: 50,
+                            width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5)))),
@@ -146,15 +138,16 @@ class _LogInState extends State<LogIn> {
                             height: 20,
                           ),
                           Center(
-                            child: RichText(
-                                text: const TextSpan(children: [
-                              TextSpan(text: "Don't have an account?"),
-                              TextSpan(
-                                  text: " Register Here",
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline))
-                            ])),
-                          )
+                              child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text("Don't have an account?"),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text("Sign Up"),
+                              )
+                            ],
+                          ))
                         ],
                       ),
                     )

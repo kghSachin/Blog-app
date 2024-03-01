@@ -6,6 +6,7 @@ ThemeData myDarkTheme = ThemeData.dark(
 ).copyWith(
   primaryColor: const Color(0xFF020617),
   scaffoldBackgroundColor: const Color(0xFF020617),
+  indicatorColor: Colors.white,
   appBarTheme: const AppBarTheme(
     // elevation: 3,
     elevation: 0,
@@ -71,12 +72,35 @@ ThemeData myDarkTheme = ThemeData.dark(
     textTheme: ButtonTextTheme.primary,
   ),
   colorScheme: const ColorScheme.dark(),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      showSelectedLabels: false,
+      selectedLabelStyle: TextStyle(
+        color: Colors.white,
+        fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
+      ),
+      elevation: 3,
+      showUnselectedLabels: false,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.black,
+      selectedIconTheme: const IconThemeData(
+        size: 28,
+        color: Colors.white,
+      ),
+      unselectedIconTheme: const IconThemeData(
+        size: 30,
+        color: Colors.white,
+      )),
   splashColor: Colors.black.withOpacity(0.5),
+
   listTileTheme: const ListTileThemeData(style: ListTileStyle.list),
   // rgba(9, 15, 32, 1)
   cardColor: const Color.fromRGBO(9, 15, 32, 1),
   inputDecorationTheme: const InputDecorationTheme(
+      filled: true,
+      fillColor: Color(0xFF0F172A),
+      hintFadeDuration: Duration(milliseconds: 1000),
       focusColor: Colors.white,
+      prefixIconColor: Colors.grey,
       focusedBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.white))),
   // scaffoldBackgroundColor: const Color(0xFF0F172A),
@@ -94,7 +118,7 @@ ThemeData myLightTheme = ThemeData.light(
     elevation: 3,
     backgroundColor: Color(0xFFC5CFDB),
   ),
-  cardColor: Colors.white.withOpacity(0.9),
+  cardColor: const Color(0xFFf2f4f7),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -145,21 +169,27 @@ ThemeData myLightTheme = ThemeData.light(
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     titleMedium: TextStyle(
+      color: Colors.black,
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     titleSmall: TextStyle(
+      color: Colors.black,
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     bodyLarge: TextStyle(
+      color: Colors.black,
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     bodyMedium: TextStyle(
+      color: Colors.black,
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     bodySmall: TextStyle(
+      color: Colors.black,
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     labelLarge: TextStyle(
+      color: Colors.black,
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     labelMedium: TextStyle(
@@ -178,8 +208,27 @@ ThemeData myLightTheme = ThemeData.light(
     ),
     textTheme: ButtonTextTheme.accent,
   ),
+  indicatorColor: Colors.black,
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    showSelectedLabels: false,
+    selectedLabelStyle: TextStyle(
+      color: Colors.white,
+      fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
+    ),
+    elevation: 2,
+    showUnselectedLabels: false,
+    type: BottomNavigationBarType.fixed,
+    backgroundColor: Colors.white,
+  ),
   colorScheme: const ColorScheme.light().copyWith(
     secondary: const Color(0xFF312E81),
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+      filled: true,
+      hintFadeDuration: Duration(milliseconds: 1000),
+      focusColor: Colors.black,
+      prefixIconColor: Colors.grey,
+      focusedBorder:
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.black))),
   scaffoldBackgroundColor: Colors.white,
 );

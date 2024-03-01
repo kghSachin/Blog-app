@@ -1,4 +1,4 @@
-import 'package:chiya_startup/pages/home/home_page.dart';
+import 'package:chiya_startup/pages/main_page.dart';
 import 'package:chiya_startup/state/theme_provider.dart';
 import 'package:chiya_startup/theme/my_theme.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: themeMode == true ? myDarkTheme : myLightTheme,
-      home: HomePage(),
+      home: MainPage(),
     );
   }
 }

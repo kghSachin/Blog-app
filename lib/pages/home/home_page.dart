@@ -30,6 +30,8 @@ class MainPageState extends ConsumerState<HomePage>
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).cardColor,
+          elevation: 0,
           title: const Text("My Feed"),
           actions: [
             IconButton(
@@ -43,92 +45,99 @@ class MainPageState extends ConsumerState<HomePage>
             ),
           ],
         ),
-        body: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              pinned: true,
-              floating: true,
-              expandedHeight: 130.0,
-              automaticallyImplyLeading: false,
-              flexibleSpace: FlexibleSpaceBar(
-                collapseMode: CollapseMode.none,
-                titlePadding: EdgeInsets.zero,
-                expandedTitleScale: 1,
-                background: Column(
-                  children: [
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    SizedBox(
-                      height: 60,
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 2,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            padding: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width: 2,
-                                    color: Colors.blueAccent.withOpacity(0.6))),
-                            child: const CircleAvatar(
-                              radius: 33,
-                              backgroundImage: NetworkImage(
-                                  "https://th.bing.com/th?id=ORMS.f9d38e851d40dc0db87ce2337719a559&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.5&p=0"),
-                            ),
-                          );
-                        },
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                backgroundColor: Theme.of(context).cardColor,
+                pinned: true,
+                floating: true,
+                expandedHeight: 130.0,
+                automaticallyImplyLeading: false,
+                flexibleSpace: FlexibleSpaceBar(
+                  collapseMode: CollapseMode.none,
+                  titlePadding: EdgeInsets.zero,
+                  expandedTitleScale: 1,
+                  background: Column(
+                    children: [
+                      const SizedBox(
+                        height: 12,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                  ],
-                ),
-                title: Container(
-                  padding: const EdgeInsets.only(top: 8, bottom: 0.2),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom:
-                          BorderSide(color: Theme.of(context).indicatorColor),
-                      top: BorderSide(color: Theme.of(context).indicatorColor),
-                    ),
+                      SizedBox(
+                        height: 60,
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) => const SizedBox(
+                            width: 2,
+                          ),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      width: 2,
+                                      color:
+                                          Colors.blueAccent.withOpacity(0.6))),
+                              child: const CircleAvatar(
+                                radius: 33,
+                                backgroundImage: NetworkImage(
+                                    "https://th.bing.com/th?id=ORMS.f9d38e851d40dc0db87ce2337719a559&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.5&p=0"),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   height: 12,
+                      // ),
+                    ],
                   ),
-                  child: TabBar(
-                      labelPadding: EdgeInsets.all(6),
-                      // isScrollable: true,
-                      // tabAlignment: TabAlignment.start,
-                      indicatorColor: Theme.of(context).colorScheme.primary,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      indicatorWeight: 2.2,
-                      indicatorPadding: const EdgeInsets.only(
-                        left: 8,
-                        right: 8,
+                  title: Container(
+                    padding: const EdgeInsets.only(top: 8, bottom: 0.2),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom:
+                            BorderSide(color: Theme.of(context).indicatorColor),
+                        top:
+                            BorderSide(color: Theme.of(context).indicatorColor),
                       ),
-                      controller: _tabController,
-                      tabs: const [
-                        Text(
-                          "My Feed",
+                    ),
+                    child: TabBar(
+                        labelPadding: const EdgeInsets.all(6),
+                        // isScrollable: true,
+                        // tabAlignment: TabAlignment.start,
+                        indicatorColor: Theme.of(context).colorScheme.primary,
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        indicatorWeight: 2.2,
+                        indicatorPadding: const EdgeInsets.only(
+                          left: 8,
+                          right: 8,
                         ),
-                        Text("Featured"),
-                        Text("Recent"),
-                      ]),
+                        controller: _tabController,
+                        tabs: const [
+                          Text(
+                            "My Feed",
+                          ),
+                          Text("Featured"),
+                          Text("Recent"),
+                        ]),
+                  ),
+                  centerTitle: true,
                 ),
-                centerTitle: true,
               ),
-            ),
-            SliverFillRemaining(
-              child: TabBarView(controller: _tabController, children: [
-                FeaturedPage(),
-                FeaturedPage(),
-                FeaturedPage(),
-              ]),
-            )
-          ],
+            ];
+          },
+          body: TabBarView(
+            controller: _tabController,
+            children: [
+              FeaturedPage(),
+              FeaturedPage(),
+              FeaturedPage(),
+            ],
+          ),
         ),
       ),
     );

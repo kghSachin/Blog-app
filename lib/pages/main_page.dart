@@ -1,99 +1,74 @@
+import 'package:chiya_startup/pages/auth/login_page.dart';
+import 'package:chiya_startup/pages/home/home_page.dart';
+import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class MainPage extends ConsumerStatefulWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class MainPageState extends ConsumerState<MainPage>
-    with TickerProviderStateMixin {
+class _MainPageState extends State<MainPage> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("My Feed"),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.create_outlined,
-              )),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notification_add_outlined),
-          ),
+      body: IndexedStack(
+        index: selectedIndex,
+        children: const [
+          HomePage(),
+          LogIn(),
+          ProfilePage(),
         ],
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            floating: true,
-            expandedHeight: 130.0,
-            automaticallyImplyLeading: false,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Column(
-                children: [
-                  SizedBox(
-                    height: 60,
-                    child: ListView.separated(
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 2,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                  width: 2,
-                                  color: Colors.blueAccent.withOpacity(0.6))),
-                          child: const CircleAvatar(
-                            radius: 33,
-                            backgroundImage: NetworkImage(
-                                "https://th.bing.com/th?id=ORMS.f9d38e851d40dc0db87ce2337719a559&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.5&p=0"),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (value) {
+            setState(() {
+              selectedIndex = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: SvgPicture.asset(
+                selectedIndex == 0
+                    ? "assets/icons/navbar/home_filled.svg"
+                    : "assets/icons/navbar/home.svg",
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 0 ? Colors.blueGrey : Colors.grey,
+                  BlendMode.srcATop,
+                ),
               ),
-              title: TabBar(
-                  // isScrollable: true,
-                  // tabAlignment: TabAlignment.start,
-                  indicatorColor: Theme.of(context).colorScheme.primary,
-                  controller: TabController(length: 3, vsync: this),
-                  tabs: [
-                    Text(
-                      "Home",
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    Text("data"),
-                    Text("data"),
-                  ]),
-              centerTitle: true,
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  height: 100,
-                  color: Colors.amber[600],
-                  child: Center(child: Text('Item $index')),
-                );
-              },
-              childCount: 20,
+            BottomNavigationBarItem(
+              label: "Search",
+              icon: SvgPicture.asset(
+                selectedIndex == 1
+                    ? "assets/icons/navbar/search_filled.svg"
+                    : "assets/icons/navbar/search.svg",
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 1 ? Colors.blueGrey : Colors.grey,
+                  BlendMode.srcATop,
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
+            BottomNavigationBarItem(
+              label: "Bookmarks",
+              icon: SvgPicture.asset(
+                selectedIndex == 2
+                    ? "assets/icons/navbar/bookmark_filled.svg"
+                    : "assets/icons/navbar/bookmark.svg",
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 2 ? Colors.blueGrey : Colors.grey,
+                  BlendMode.srcATop,
+                ),
+              ),
+            )
+          ]),
     );
   }
 }

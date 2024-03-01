@@ -17,23 +17,23 @@ class _FeaturedPageState extends State<FeaturedPage> {
             children: [
               Container(
                 height: 200,
-                color: Colors.green,
+                color: Theme.of(context).cardColor,
               ),
               Container(
                 height: 200,
-                color: Colors.green,
+                color: Theme.of(context).cardColor,
               ),
               Container(
                 height: 200,
-                color: Colors.red,
+                color: Theme.of(context).cardColor,
               ),
               Container(
                 height: 200,
-                color: Colors.green,
+                color: Theme.of(context).cardColor,
               ),
               Container(
                 height: 200,
-                color: Colors.green,
+                color: Theme.of(context).cardColor,
               )
             ],
           ),

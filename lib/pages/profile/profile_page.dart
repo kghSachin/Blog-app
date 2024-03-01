@@ -3,6 +3,7 @@ import 'package:chiya_startup/state/theme_provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
@@ -39,7 +40,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     backgroundColor: Colors.pinkAccent,
                     child: Center(
                       child: Text(
-                        "SB",
+                        "SD",
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ),
@@ -51,7 +52,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Sachin Basnet",
+                        "Sumit Dhakal",
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge
@@ -61,7 +62,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         height: 2,
                       ),
                       Text(
-                        "@KghSachin",
+                        "@dhakalsumit06",
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: Colors.grey,
                             ),
@@ -85,7 +86,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("My Posts"),
-                        leading: const Icon(Icons.bookmark_add_outlined),
+                        leading: SvgPicture.asset(
+                          "assets/icons/navbar/bookmark_filled.svg",
+                          colorFilter: ColorFilter.mode(
+                              Theme.of(context).indicatorColor,
+                              BlendMode.srcATop),
+                        ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 18,
@@ -101,7 +107,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
                         onTap: () {},
                         title: const Text("Draft Posts"),
-                        leading: const Icon(Icons.drafts_outlined),
+                        leading: SvgPicture.asset(
+                          "assets/icons/profile/draft.svg",
+                          colorFilter: ColorFilter.mode(
+                              Theme.of(context).indicatorColor,
+                              BlendMode.srcATop),
+                        ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 18,
