@@ -25,13 +25,13 @@ class HomeCard extends ConsumerWidget {
           ),
           Text(
             """The digital payment landscape in Nepal is evolving rapidly, with fintechs playing a key role in driving the growth of digital payments.
-            The digital payment landscape in Nepal is evolving rapidly, with fintechs playing a key role in driving the growth of digital payments.""",
+ wor fflks fla The digital payment landscape in Nepal is evolving rapidly, with fintechs playing a key role in driving the growth of digital payments.""",
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.3,
                   height: 1.4,
                   color: Theme.of(context).indicatorColor.withOpacity(0.8),
-                  fontStyle: GoogleFonts.dmSerifDisplay().fontStyle,
+                  fontStyle: GoogleFonts.robotoCondensed().fontStyle,
                 ),
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
@@ -39,20 +39,28 @@ class HomeCard extends ConsumerWidget {
           const SizedBox(
             height: 12,
           ),
-          Container(
-            height: 200,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            width: double.maxFinite,
-            child: Center(
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
-                placeholder: (context, url) {
-                  return const CircularProgressIndicator();
-                },
-                errorWidget: (context, url, error) {
-                  return const Icon(Icons.error);
-                },
+                height: 280,
                 imageUrl:
-                    "https://th.bing.com/th/id/R.892bb645c09c766efcc5bc4d0c93094a?rik=slmcvUaa5yToAw&riu=http%3a%2f%2fwww.wallpapers13.com%2fwp-content%2fuploads%2f2015%2f12%2fNature-Lake-Bled.-Desktop-background-image.jpg&ehk=c2raFC95S12P3OL0%2fwdM60ro3oUxsSEajkuGEN%2fsjbo%3d&risl=1&pid=ImgRaw&r=0",
+                    "https://static01.nyt.com/images/2024/02/29/multimedia/29pol-border-assess-topart-cjwl/29pol-border-assess-topart-cjwl-superJumbo.jpg?quality=75&auto=webp",
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey[200]),
+                    child: const Center(child: Icon(Icons.error))),
               ),
             ),
           ),

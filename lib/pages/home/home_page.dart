@@ -1,4 +1,6 @@
+import 'package:chiya_startup/pages/home/events.dart';
 import 'package:chiya_startup/pages/home/featured_page.dart';
+import 'package:chiya_startup/pages/home/my_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -144,9 +146,9 @@ class MainPageState extends ConsumerState<HomePage>
           body: TabBarView(
             controller: _tabController,
             children: [
+              MyFeed(),
               FeaturedPage(),
-              FeaturedPage(),
-              FeaturedPage(),
+              UpcomingEvents(),
             ],
           ),
         ),
