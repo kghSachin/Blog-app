@@ -164,16 +164,19 @@ class RegisterForUpcomingEventState
               ElevatedButton(
                 onPressed: () {},
                 child: SizedBox(
-                    height: 48,
-                    width: double.maxFinite,
-                    child: Center(
-                        child: Text(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: Center(
+                    child: Text(
                       "Register (via Khalti)",
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.4,
-                          height: 1.4),
-                    ))),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.4,
+                            height: 1.4,
+                          ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

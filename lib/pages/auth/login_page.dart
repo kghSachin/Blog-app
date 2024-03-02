@@ -1,3 +1,4 @@
+import 'package:chiya_startup/pages/auth/register_page.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
@@ -8,6 +9,7 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,8 +107,24 @@ class _LogInState extends State<LogIn> {
                             height: 10,
                           ),
                           TextField(
+                            obscureText: _isObscure,
                             decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.lock_outline),
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isObscure = !_isObscure;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    _isObscure
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                    color: Theme.of(context)
+                                        .indicatorColor
+                                        .withOpacity(0.6),
+                                  ),
+                                ),
+                                prefixIcon: const Icon(Icons.lock_outline),
                                 filled: true,
                                 fillColor: Theme.of(context).focusColor,
                                 hintText: "Enter your password",
@@ -142,7 +160,11 @@ class _LogInState extends State<LogIn> {
                             children: [
                               const Text("Don't have an account?"),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          const RegisterPage()));
+                                },
                                 child: const Text("Sign Up"),
                               )
                             ],
