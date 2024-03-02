@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:khalti_flutter/khalti_flutter.dart';
 
 class RegisterForUpcomingEvent extends ConsumerStatefulWidget {
   const RegisterForUpcomingEvent({super.key});
@@ -14,6 +15,17 @@ class RegisterForUpcomingEventState
     extends ConsumerState<RegisterForUpcomingEvent> {
   @override
   Widget build(BuildContext context) {
+    final config = PaymentConfig(
+      mobile: "9812315887",
+      amount: 10000, // Amount should be in paisa
+      productIdentity: 'dell-g5-g5510-2021',
+      productName: 'Dell G5 G5510 2021',
+      productUrl: 'https://www.khalti.com/#/bazaar',
+      additionalData: {
+        // Not mandatory; can be used for reporting purpose
+        'vendor': 'Khalti Bazaar',
+      },
+    );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).cardColor,
@@ -143,7 +155,7 @@ class RegisterForUpcomingEventState
                 ),
               ),
               const SizedBox(
-                height: 12,
+                height: 16,
               ),
               const Text("Institution / Business (optional)"),
               const SizedBox(
@@ -162,7 +174,23 @@ class RegisterForUpcomingEventState
                 height: 24,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  KhaltiScope.of(context).pay(
+                      config: config,
+                      onSuccess: (value) {
+                        print(value.token);
+                        print(value.additionalData);
+                        print(value.idx);
+                        print(value.mobile);
+                        print(value.productUrl);
+                        print(value.productName);
+                        print(value.productIdentity);
+                      },
+                      onFailure: (value) {
+                        print(value.message);
+                        print(value.data);
+                      });
+                },
                 child: SizedBox(
                   height: 48,
                   width: double.maxFinite,
@@ -178,6 +206,7 @@ class RegisterForUpcomingEventState
                   ),
                 ),
               ),
+              const SizedBox(height: 24),
             ],
           ),
         ),

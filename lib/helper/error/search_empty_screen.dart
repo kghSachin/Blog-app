@@ -13,9 +13,15 @@ class SearchEmptyScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircleAvatar(
-              radius: 150,
-              backgroundColor: Theme.of(context).focusColor,
-              child: Lottie.asset("assets/lottie/empty_search.json")),
+            radius: 150,
+            backgroundColor: Theme.of(context).focusColor,
+            child: Lottie.asset(
+              "assets/lottie/empty_search.json",
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.error);
+              },
+            ),
+          ),
           const SizedBox(height: 12),
           Text(
             "Start searching for posts and users on chiya and startup.",

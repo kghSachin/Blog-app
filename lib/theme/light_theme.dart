@@ -17,6 +17,7 @@ ThemeData myLightTheme = ThemeData.light(
     backgroundColor: Color(0xFFC5CFDB),
   ),
   cardColor: const Color(0xFFf2f4f7),
+
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -36,6 +37,7 @@ ThemeData myLightTheme = ThemeData.light(
       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       backgroundColor: MaterialStateProperty.all<Color>(
         const Color.fromARGB(255, 30, 33, 38).withOpacity(0.8),
+        // Colors.purple,
       ),
     ),
   ),
@@ -136,6 +138,7 @@ ThemeData myLightTheme = ThemeData.light(
       hintFadeDuration: Duration(milliseconds: 1000),
       focusColor: Colors.grey,
       fillColor: Color(0xFFf2f4f7),
+      // fillColor: Colors.deepPurple,
       prefixIconColor: Colors.grey,
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
