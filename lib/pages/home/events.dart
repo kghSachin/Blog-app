@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chiya_startup/pages/home/register_for_event.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,7 +25,7 @@ class UpcomingEvents extends ConsumerWidget {
         );
       },
       itemBuilder: (BuildContext context, int index) {
-        return UpcomingCard();
+        return const UpcomingCard();
       },
     );
   }
@@ -47,14 +47,14 @@ class UpcomingCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: CachedNetworkImage(
-              height: 220,
+              height: 250,
               imageUrl:
-                  "https://static01.nyt.com/images/2024/02/29/multimedia/29pol-border-assess-topart-cjwl/29pol-border-assess-topart-cjwl-superJumbo.jpg?quality=75&auto=webp",
+                  "https://chiyarastartup.com/media/even/img/chiya_nn3y5yw.jpg",
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: imageProvider,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -65,14 +65,15 @@ class UpcomingCard extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 6,
+            height: 8,
           ),
           Text(
-            "चिया र Startup with Mr. Nomash Chapagain",
+            "चिया र Startup with Mr. Nomash Chapagain.",
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Theme.of(context).indicatorColor.withOpacity(0.8),
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.2,
-                  height: 0.9,
+                  height: 1.2,
                   fontFamily: GoogleFonts.roboto().fontFamily,
                 ),
           ),
@@ -110,7 +111,7 @@ class UpcomingCard extends StatelessWidget {
               Text(
                 "Time: 3:00 PM",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.bold,
                       letterSpacing: 0.3,
                       height: 1.4,
                       color: Theme.of(context).indicatorColor,
@@ -138,7 +139,7 @@ class UpcomingCard extends StatelessWidget {
               Text(
                 "Price: NPR 500",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.bold,
                       letterSpacing: 0.3,
                       height: 1.4,
                       color: Theme.of(context).indicatorColor,
@@ -148,14 +149,25 @@ class UpcomingCard extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 6,
+            height: 10,
           ),
           MaterialButton(
-              color: Colors.deepPurple,
-              onPressed: () {},
-              child: const SizedBox(
-                  width: double.maxFinite,
-                  child: Center(child: Text("Register Now"))))
+            color: Colors.deepPurple,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const RegisterForUpcomingEvent(),
+              ));
+            },
+            child: const SizedBox(
+              height: 42,
+              width: double.maxFinite,
+              child: Center(
+                child: Text("Register Now",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w600)),
+              ),
+            ),
+          )
         ],
       ),
     );

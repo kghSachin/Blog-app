@@ -135,7 +135,7 @@ class MainPageState extends ConsumerState<HomePage>
                             "My Feed",
                           ),
                           Text("Featured"),
-                          Text("Recent"),
+                          Text("Upcoming"),
                         ]),
                   ),
                   centerTitle: true,

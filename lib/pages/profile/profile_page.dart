@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:chiya_startup/pages/profile/url_launcher.dart';
 import 'package:chiya_startup/state/theme_provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -286,7 +287,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     Material(
                       child: ListTile(
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(null, "https", "www.discord.com");
+                        },
                         title: const Text("Discord"),
                         leading: SvgPicture.asset(
                           "assets/icons/profile/discord.svg",
@@ -307,7 +310,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     Material(
                       child: ListTile(
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(
+                              '@chiyarastartup', "https", "www.facebook.com");
+                        },
                         title: const Text("Facebook"),
                         leading: const Icon(Icons.facebook_outlined),
                         trailing: const Icon(
@@ -323,7 +329,35 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     Material(
                       child: ListTile(
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(
+                              "/@chiyarastartup", "https", "www.youtube.com");
+                        },
+                        title: const Text("Youtube"),
+                        leading: SvgPicture.asset(
+                          height: 26,
+                          width: 26,
+                          "assets/icons/profile/youtube.svg",
+                          colorFilter: ColorFilter.mode(
+                              Theme.of(context).indicatorColor,
+                              BlendMode.srcATop),
+                        ),
+                        trailing: const Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      height: 0,
+                      color: Theme.of(context).dividerColor,
+                    ),
+                    Material(
+                      child: ListTile(
+                        tileColor: Theme.of(context).scaffoldBackgroundColor,
+                        onTap: () {
+                          launchURL(null, "https", "www.twitter.com");
+                        },
                         title: const Text("Twitter"),
                         leading: SvgPicture.asset(
                           height: 18,
@@ -348,7 +382,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         contentPadding:
                             const EdgeInsets.only(left: 8, right: 24),
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(null, "https", "www.linkedin.com");
+                        },
                         title: const Text("LinkedIn"),
                         leading: SvgPicture.asset(
                           height: 28,
@@ -378,7 +414,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   child: ListTile(
                     tileColor: Theme.of(context).scaffoldBackgroundColor,
                     splashColor: Colors.black.withOpacity(0.5),
-                    onTap: () {},
+                    onTap: () {
+                      _showDialog(context);
+                    },
                     title: Text(
                       "Logout",
                       style: TextStyle(color: Colors.red.withOpacity(0.8)),
@@ -409,5 +447,59 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         ),
       ),
     );
+  }
+
+  _showDialog(context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            insetAnimationCurve: Curves.easeInOutBack,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    "Are you sure you want to logout from the app?",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const SizedBox(
+                        width: double.maxFinite,
+                        child: Center(child: Text("Cancel"))),
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const SizedBox(
+                        width: double.maxFinite,
+                        child: Center(child: Text("Logout"))),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
