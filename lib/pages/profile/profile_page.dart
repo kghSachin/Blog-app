@@ -454,11 +454,16 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         context: context,
         builder: (BuildContext context) {
           return Dialog(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             insetAnimationCurve: Curves.easeInOutBack,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
             child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Theme.of(context).scaffoldBackgroundColor,
+              ),
               padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

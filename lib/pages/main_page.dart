@@ -1,4 +1,7 @@
+import 'package:chiya_startup/helper/error/bookmark_error.dart';
+import 'package:chiya_startup/helper/error/search_empty_screen.dart';
 import 'package:chiya_startup/pages/auth/login_page.dart';
+import 'package:chiya_startup/pages/auth/register_page.dart';
 import 'package:chiya_startup/pages/home/home_page.dart';
 import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +23,8 @@ class _MainPageState extends State<MainPage> {
         index: selectedIndex,
         children: const [
           HomePage(),
-          LogIn(),
+          SearchEmptyScreen(),
+          NoBookmark(),
           ProfilePage(),
         ],
       ),
@@ -39,7 +43,7 @@ class _MainPageState extends State<MainPage> {
                     ? "assets/icons/navbar/home_filled.svg"
                     : "assets/icons/navbar/home.svg",
                 colorFilter: ColorFilter.mode(
-                  selectedIndex == 0 ? Colors.blueGrey : Colors.grey,
+                  selectedIndex == 0 ? Colors.blue : Colors.grey,
                   BlendMode.srcATop,
                 ),
               ),
@@ -51,7 +55,7 @@ class _MainPageState extends State<MainPage> {
                     ? "assets/icons/navbar/search_filled.svg"
                     : "assets/icons/navbar/search.svg",
                 colorFilter: ColorFilter.mode(
-                  selectedIndex == 1 ? Colors.blueGrey : Colors.grey,
+                  selectedIndex == 1 ? Colors.blue : Colors.grey,
                   BlendMode.srcATop,
                 ),
               ),
@@ -63,8 +67,21 @@ class _MainPageState extends State<MainPage> {
                     ? "assets/icons/navbar/bookmark_filled.svg"
                     : "assets/icons/navbar/bookmark.svg",
                 colorFilter: ColorFilter.mode(
-                  selectedIndex == 2 ? Colors.blueGrey : Colors.grey,
+                  selectedIndex == 2 ? Colors.blue : Colors.grey,
                   BlendMode.srcATop,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: "Bookmarks",
+              icon: CircleAvatar(
+                radius: 12,
+                backgroundColor: selectedIndex == 3 ? Colors.blue : Colors.grey,
+                child: const Center(
+                  child: Icon(
+                    Icons.person_outline_outlined,
+                    size: 20,
+                  ),
                 ),
               ),
             )
