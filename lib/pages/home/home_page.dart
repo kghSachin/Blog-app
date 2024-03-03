@@ -1,3 +1,4 @@
+import 'package:chiya_startup/pages/auth/landing_page.dart';
 import 'package:chiya_startup/pages/home/events.dart';
 import 'package:chiya_startup/pages/home/featured_page.dart';
 import 'package:chiya_startup/pages/home/my_feed.dart';
@@ -37,7 +38,10 @@ class MainPageState extends ConsumerState<HomePage>
           title: const Text("My Feed"),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LandingPage()));
+                },
                 icon: const Icon(
                   Icons.create_outlined,
                 )),
