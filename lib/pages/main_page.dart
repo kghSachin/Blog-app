@@ -1,7 +1,6 @@
 import 'package:chiya_startup/helper/error/bookmark_error.dart';
 import 'package:chiya_startup/helper/error/search_empty_screen.dart';
-import 'package:chiya_startup/pages/auth/login_page.dart';
-import 'package:chiya_startup/pages/auth/register_page.dart';
+
 import 'package:chiya_startup/pages/home/home_page.dart';
 import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';

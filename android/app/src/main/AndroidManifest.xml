@@ -33,7 +33,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="kpg" android:host="{your package name}" />
+                <data android:scheme="kpg" android:host="sachinbasnet971.chiya_startup" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

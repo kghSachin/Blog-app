@@ -12,6 +12,7 @@ ThemeData myDarkTheme = ThemeData.dark(
     elevation: 0,
     backgroundColor: Color(0xFF020617),
   ),
+
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -20,8 +21,11 @@ ThemeData myDarkTheme = ThemeData.dark(
         ),
       ),
       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      overlayColor: MaterialStateProperty.all<Color>(Colors.black),
       backgroundColor:
           MaterialStateProperty.all<Color>(const Color(0xFF464F60)),
+      // MaterialStateProperty.all<Color>(Color.fromARGB(255, 118, 20, 44)),
+//
     ),
   ),
   textTheme: TextTheme(

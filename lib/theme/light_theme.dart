@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +9,7 @@ ThemeData myLightTheme = ThemeData.light(
       borderRadius: BorderRadius.circular(10),
     ),
   ),
+
   appBarTheme: const AppBarTheme(
     surfaceTintColor: Colors.white,
     elevation: 3,
@@ -34,7 +33,7 @@ ThemeData myLightTheme = ThemeData.light(
         fontWeight: FontWeight.w500,
         color: Colors.white,
       )),
-      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
       backgroundColor: MaterialStateProperty.all<Color>(
         const Color.fromARGB(255, 30, 33, 38).withOpacity(0.8),
         // Colors.purple,

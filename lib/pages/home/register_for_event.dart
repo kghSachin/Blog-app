@@ -173,10 +173,19 @@ class RegisterForUpcomingEventState
               const SizedBox(
                 height: 24,
               ),
+             
               ElevatedButton(
-                onPressed: () {
-                  KhaltiScope.of(context).pay(
+                onPressed: () async {
+                  await KhaltiScope.of(context).pay(
+                      preferences: [
+                        PaymentPreference.khalti,
+                        PaymentPreference.eBanking,
+                        PaymentPreference.mobileBanking,
+                      ],
                       config: config,
+                      onCancel: () {
+                        print("Cancelled");
+                      },
                       onSuccess: (value) {
                         print(value.token);
                         print(value.additionalData);
@@ -187,6 +196,7 @@ class RegisterForUpcomingEventState
                         print(value.productIdentity);
                       },
                       onFailure: (value) {
+                        print("failed");
                         print(value.message);
                         print(value.data);
                       });
