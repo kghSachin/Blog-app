@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chiya_startup/pages/auth/landing_page.dart';
 import 'package:chiya_startup/pages/home/events.dart';
 import 'package:chiya_startup/pages/home/featured_page.dart';
 import 'package:chiya_startup/pages/home/my_feed.dart';
+import 'package:chiya_startup/pages/home/search_page.dart';
+import 'package:chiya_startup/pages/post_detail/post_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -46,7 +49,10 @@ class MainPageState extends ConsumerState<HomePage>
                   Icons.create_outlined,
                 )),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const PostDetailsView()));
+              },
               icon: const Icon(Icons.notification_add_outlined),
             ),
           ],
@@ -74,10 +80,10 @@ class MainPageState extends ConsumerState<HomePage>
                         height: 60,
                         child: ListView.separated(
                           separatorBuilder: (context, index) => const SizedBox(
-                            width: 2,
+                            width: 12,
                           ),
                           scrollDirection: Axis.horizontal,
-                          itemCount: 10,
+                          itemCount: 3,
                           itemBuilder: (BuildContext context, int index) {
                             return Container(
                               padding: const EdgeInsets.all(2),
@@ -87,10 +93,14 @@ class MainPageState extends ConsumerState<HomePage>
                                       width: 2,
                                       color:
                                           Colors.blueAccent.withOpacity(0.6))),
-                              child: const CircleAvatar(
+                              child: CircleAvatar(
                                 radius: 33,
-                                backgroundImage: NetworkImage(
-                                    "https://th.bing.com/th?id=ORMS.f9d38e851d40dc0db87ce2337719a559&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.5&p=0"),
+                                backgroundImage: CachedNetworkImageProvider(
+                                  "https://chiyarastartup.com/media/img/Nurturing_Health_and_Innovation.jpg",
+                                  errorListener: (p0) {
+                                    return;
+                                  },
+                                ),
                               ),
                             );
                           },
@@ -151,7 +161,7 @@ class MainPageState extends ConsumerState<HomePage>
             controller: _tabController,
             children: [
               MyFeed(),
-              FeaturedPage(),
+              SearchPage(),
               UpcomingEvents(),
             ],
           ),

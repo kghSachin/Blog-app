@@ -1,7 +1,6 @@
 import 'package:chiya_startup/helper/error/bookmark_error.dart';
-import 'package:chiya_startup/helper/error/search_empty_screen.dart';
-
 import 'package:chiya_startup/pages/home/home_page.dart';
+import 'package:chiya_startup/pages/post_detail/post_details.dart';
 import 'package:chiya_startup/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,9 +19,11 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: IndexedStack(
         index: selectedIndex,
-        children: const [
+        children: [
           HomePage(),
-          SearchEmptyScreen(),
+          // SearchEmptyScreen(),
+          PostDetailsView(),
+          // YoutubeAppDemo(),
           NoBookmark(),
           ProfilePage(),
         ],
