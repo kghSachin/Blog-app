@@ -46,7 +46,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
             thickness: 1.5,
             color: Theme.of(context).indicatorColor.withOpacity(0.2),
           ),
-          Expanded(child: SearchEmptyScreen())
+          const SearchEmptyScreen()
         ],
       ),
     );

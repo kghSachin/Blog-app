@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chiya_startup/pages/auth/landing_page.dart';
 import 'package:chiya_startup/pages/home/events.dart';
+import 'package:chiya_startup/pages/home/featured_page.dart';
 import 'package:chiya_startup/pages/home/my_feed.dart';
 import 'package:chiya_startup/pages/search/search_page.dart';
 import 'package:chiya_startup/pages/post_detail/post_details.dart';
@@ -160,7 +161,7 @@ class MainPageState extends ConsumerState<HomePage>
             controller: _tabController,
             children: const [
               MyFeed(),
-              SearchPage(),
+              FeaturedPage(),
               UpcomingEvents(),
             ],
           ),
