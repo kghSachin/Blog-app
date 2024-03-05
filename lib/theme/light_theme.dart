@@ -11,10 +11,23 @@ ThemeData myLightTheme = ThemeData.light(
   ),
 
   appBarTheme: const AppBarTheme(
+    color: Colors.white,
     surfaceTintColor: Colors.white,
     elevation: 3,
-    backgroundColor: Color(0xFFC5CFDB),
+    // backgroundColor: const Color(0xFFC5CFDB),
   ),
+  searchBarTheme: SearchBarThemeData(
+      shadowColor: MaterialStateProperty.all(Colors.white),
+      surfaceTintColor: MaterialStateProperty.all(Colors.white),
+      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+          side: BorderSide(
+            color: Colors.grey.withOpacity(0.5),
+          ))),
+      backgroundColor: MaterialStateProperty.all(Colors.white),
+      hintStyle:
+          MaterialStateProperty.all(const TextStyle(color: Colors.grey))),
+
   cardColor: const Color(0xFFf2f4f7),
 
   elevatedButtonTheme: ElevatedButtonThemeData(
