@@ -10,6 +10,9 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   late final PageController _pageController;
+  var _height;
+  var _width;
+  int selectedVal = 0;
   bool onLastPage = false;
   @override
   void initState() {
@@ -32,10 +35,12 @@ class _LandingPageState extends State<LandingPage> {
             onPageChanged: (index) {
               if (index == 3) {
                 setState(() {
+                  selectedVal = index;
                   onLastPage = true;
                 });
               } else {
                 setState(() {
+                  selectedVal = index;
                   onLastPage = false;
                 });
               }
@@ -43,7 +48,7 @@ class _LandingPageState extends State<LandingPage> {
             controller: _pageController,
             children: [
               Container(
-                color: Colors.red,
+                color: Colors.blueGrey,
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -52,7 +57,7 @@ class _LandingPageState extends State<LandingPage> {
                 ),
               ),
               Container(
-                color: Colors.green,
+                color: Colors.blueGrey,
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
@@ -62,7 +67,7 @@ class _LandingPageState extends State<LandingPage> {
                 ),
               ),
               Container(
-                color: Colors.blue,
+                color: Colors.blueGrey,
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
@@ -71,7 +76,7 @@ class _LandingPageState extends State<LandingPage> {
                 ),
               ),
               Container(
-                color: Colors.blue,
+                color: Colors.blueGrey,
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
@@ -94,39 +99,33 @@ class _LandingPageState extends State<LandingPage> {
               padding: const EdgeInsets.all(24.0),
               child: Row(
                 children: [
-                  OutlinedButton(
-                    style: ButtonStyle(
-                      side: MaterialStateProperty.all<BorderSide>(
-                        const BorderSide(
-                          color: Color(0xFFC5CFDB),
+                  if (!onLastPage)
+                    OutlinedButton(
+                        style: ButtonStyle(
+                          side: MaterialStateProperty.all<BorderSide>(
+                            const BorderSide(
+                              color: Color(0xFFC5CFDB),
+                            ),
+                          ),
+                          textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.black),
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white
+                                  // Colors.purple,
+                                  ),
                         ),
-                      ),
-                      textStyle: MaterialStateProperty.all<TextStyle>(
-                        const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.black),
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white
-                              // Colors.purple,
-                              ),
-                    ),
-                    onPressed: () {
-                      if (!onLastPage) {
-                        _pageController.jumpToPage(3);
-                      } else {
-                        _pageController.previousPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        );
-                      }
-                    },
-                    child:
-                        !onLastPage ? const Text("Skip") : const Text("Prev"),
-                  ),
+                        onPressed: () {
+                          {
+                            _pageController.jumpToPage(3);
+                          }
+                        },
+                        child: const Text("Skip")),
                   const Spacer(),
                   OutlinedButton(
                     style: ButtonStyle(
@@ -167,15 +166,42 @@ class _LandingPageState extends State<LandingPage> {
           ),
           Positioned(
               bottom: 120,
-              left: MediaQuery.of(context).size.width / 2 - 42,
+              left: MediaQuery.of(context).size.width / 2 - 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AnimatedContainer(
-                    height: 16,
-                    width: 20,
+                    height: selectedVal == 0 ? 12 : 12,
+                    width: selectedVal == 0 ? 26 : 16,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color:
+                          selectedVal == 0 ? Colors.pinkAccent : Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    duration: const Duration(milliseconds: 300),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  AnimatedContainer(
+                    height: selectedVal == 1 ? 12 : 12,
+                    width: selectedVal == 1 ? 26 : 16,
+                    decoration: BoxDecoration(
+                      color:
+                          selectedVal == 1 ? Colors.pinkAccent : Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    duration: const Duration(milliseconds: 300),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  AnimatedContainer(
+                    height: selectedVal == 2 ? 12 : 12,
+                    width: selectedVal == 2 ? 26 : 16,
+                    decoration: BoxDecoration(
+                      color:
+                          selectedVal == 2 ? Colors.pinkAccent : Colors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     duration: const Duration(milliseconds: 300),
@@ -184,34 +210,11 @@ class _LandingPageState extends State<LandingPage> {
                     width: 12,
                   ),
                   AnimatedContainer(
-                    height: 16,
-                    width: 20,
+                    height: selectedVal == 3 ? 12 : 12,
+                    width: selectedVal == 3 ? 26 : 16,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    duration: const Duration(milliseconds: 300),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  AnimatedContainer(
-                    height: 16,
-                    width: 20,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    duration: const Duration(milliseconds: 300),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  AnimatedContainer(
-                    height: 16,
-                    width: 20,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color:
+                          selectedVal == 3 ? Colors.pinkAccent : Colors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     duration: const Duration(milliseconds: 300),
