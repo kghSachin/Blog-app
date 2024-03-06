@@ -74,72 +74,72 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               const SizedBox(
                 height: 24,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Column(
-                  children: [
-                    Material(
-                      child: ListTile(
-                        tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
-                        title: const Text("My Posts"),
-                        leading: const Icon(
-                          Icons.image_outlined,
-                          size: 24,
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 16,
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      height: 0,
-                      color: Theme.of(context).dividerColor,
-                    ),
-                    Material(
-                      child: ListTile(
-                        tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
-                        title: const Text("Draft Posts"),
-                        leading: const Icon(
-                          Icons.article_outlined,
-                          size: 24,
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 16,
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      height: 0,
-                      color: Theme.of(context).dividerColor,
-                    ),
-                    Material(
-                      child: ListTile(
-                        tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
-                        title: const Text("History"),
-                        leading: const Icon(
-                          Icons.history_outlined,
-                          size: 24,
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 28,
-              ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(horizontal: 8),
+              //   decoration: BoxDecoration(
+              //       color: Theme.of(context).scaffoldBackgroundColor,
+              //       borderRadius: BorderRadius.circular(8)),
+              //   child: Column(
+              //     children: [
+              //       Material(
+              //         child: ListTile(
+              //           tileColor: Theme.of(context).scaffoldBackgroundColor,
+              //           onTap: () {},
+              //           title: const Text("My Posts"),
+              //           leading: const Icon(
+              //             Icons.image_outlined,
+              //             size: 24,
+              //           ),
+              //           trailing: const Icon(
+              //             Icons.arrow_forward_ios_outlined,
+              //             size: 16,
+              //           ),
+              //         ),
+              //       ),
+              //       Divider(
+              //         height: 0,
+              //         color: Theme.of(context).dividerColor,
+              //       ),
+              //       Material(
+              //         child: ListTile(
+              //           tileColor: Theme.of(context).scaffoldBackgroundColor,
+              //           onTap: () {},
+              //           title: const Text("Draft Posts"),
+              //           leading: const Icon(
+              //             Icons.article_outlined,
+              //             size: 24,
+              //           ),
+              //           trailing: const Icon(
+              //             Icons.arrow_forward_ios_outlined,
+              //             size: 16,
+              //           ),
+              //         ),
+              //       ),
+              //       Divider(
+              //         height: 0,
+              //         color: Theme.of(context).dividerColor,
+              //       ),
+              //       Material(
+              //         child: ListTile(
+              //           tileColor: Theme.of(context).scaffoldBackgroundColor,
+              //           onTap: () {},
+              //           title: const Text("History"),
+              //           leading: const Icon(
+              //             Icons.history_outlined,
+              //             size: 24,
+              //           ),
+              //           trailing: const Icon(
+              //             Icons.arrow_forward_ios_outlined,
+              //             size: 16,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 28,
+              // ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
