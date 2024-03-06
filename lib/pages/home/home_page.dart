@@ -4,6 +4,7 @@ import 'package:chiya_startup/pages/home/events.dart';
 import 'package:chiya_startup/pages/home/featured_page.dart';
 import 'package:chiya_startup/pages/home/my_feed.dart';
 import 'package:chiya_startup/pages/post_detail/post_details.dart';
+import 'package:chiya_startup/pages/profile/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -40,19 +41,20 @@ class MainPageState extends ConsumerState<HomePage>
           title: const Text("My Feed"),
           actions: [
             IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const LandingPage()));
-                },
-                icon: const Icon(
-                  Icons.create_outlined,
-                )),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LandingPage()));
+              },
+              icon: const Icon(
+                Icons.create_outlined,
+              ),
+            ),
             IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const PostDetailsView()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const NotificationScreen()));
               },
-              icon: const Icon(Icons.notification_add_outlined),
+              icon: const Icon(Icons.notifications_outlined),
             ),
           ],
         ),

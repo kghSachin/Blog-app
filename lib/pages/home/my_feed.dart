@@ -24,7 +24,11 @@ class MyFeed extends ConsumerWidget {
         );
       },
       itemBuilder: (BuildContext context, int index) {
-        return const HomeCard();
+        return InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, "/details");
+            },
+            child: const HomeCard());
       },
     );
   }

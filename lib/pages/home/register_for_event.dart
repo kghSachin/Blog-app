@@ -58,17 +58,20 @@ class RegisterForUpcomingEventState
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.5,
                       height: 1.4,
-                      fontFamily: GoogleFonts.acme().fontFamily,
+                      fontFamily: GoogleFonts.lato().fontFamily,
                       color: Theme.of(context).indicatorColor.withOpacity(0.8),
                     ),
                 textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 16,
               ),
               Text(
                 "Date: 12th September, 2021",
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2,
-                      fontFamily: GoogleFonts.acme().fontFamily,
+                      fontFamily: GoogleFonts.lato().fontFamily,
                       color: Theme.of(context).indicatorColor.withOpacity(0.6),
                     ),
               ),
@@ -77,7 +80,7 @@ class RegisterForUpcomingEventState
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2,
-                      fontFamily: GoogleFonts.acme().fontFamily,
+                      fontFamily: GoogleFonts.lato().fontFamily,
                       color: Theme.of(context).indicatorColor.withOpacity(0.6),
                     ),
               ),
@@ -86,7 +89,7 @@ class RegisterForUpcomingEventState
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2,
-                      fontFamily: GoogleFonts.acme().fontFamily,
+                      fontFamily: GoogleFonts.lato().fontFamily,
                       color: Theme.of(context).indicatorColor.withOpacity(0.6),
                     ),
               ),
@@ -173,8 +176,11 @@ class RegisterForUpcomingEventState
               const SizedBox(
                 height: 24,
               ),
-             
               ElevatedButton(
+                
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+                ),
                 onPressed: () async {
                   await KhaltiScope.of(context).pay(
                       preferences: [
@@ -216,7 +222,7 @@ class RegisterForUpcomingEventState
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 60),
             ],
           ),
         ),

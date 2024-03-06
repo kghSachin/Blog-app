@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeCard extends ConsumerWidget {
@@ -19,7 +21,7 @@ class HomeCard extends ConsumerWidget {
                   fontWeight: FontWeight.w500,
                   letterSpacing: 0.4,
                   color: Theme.of(context).indicatorColor,
-                  fontFamily: GoogleFonts.aclonica().fontFamily,
+                  fontFamily: GoogleFonts.montserrat().fontFamily,
                 ),
           ),
           const SizedBox(
@@ -34,7 +36,7 @@ class HomeCard extends ConsumerWidget {
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2,
-                            fontFamily: GoogleFonts.acme().fontFamily,
+                            fontFamily: GoogleFonts.lato().fontFamily,
                             color: Theme.of(context)
                                 .indicatorColor
                                 .withOpacity(0.6),
@@ -43,7 +45,7 @@ class HomeCard extends ConsumerWidget {
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2,
-                            fontFamily: GoogleFonts.acme().fontFamily,
+                            fontFamily: GoogleFonts.lato().fontFamily,
                             color: Theme.of(context)
                                 .indicatorColor
                                 .withOpacity(0.6),
@@ -59,7 +61,7 @@ class HomeCard extends ConsumerWidget {
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2,
-                          fontFamily: GoogleFonts.acme().fontFamily,
+                          fontFamily: GoogleFonts.lato().fontFamily,
                           color:
                               Theme.of(context).indicatorColor.withOpacity(0.6),
                         ),
@@ -69,7 +71,7 @@ class HomeCard extends ConsumerWidget {
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2,
-                          fontFamily: GoogleFonts.acme().fontFamily,
+                          fontFamily: GoogleFonts.lato().fontFamily,
                           color:
                               Theme.of(context).indicatorColor.withOpacity(0.6),
                         ),
@@ -127,13 +129,30 @@ class HomeCard extends ConsumerWidget {
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
                 errorWidget: (context, url, error) => Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.grey[200]),
-                    child: const Center(child: Icon(Icons.error))),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[200]),
+                  child: const Center(
+                    child: Icon(Icons.error),
+                  ),
+                ),
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                "assets/icons/navbar/bookmark.svg",
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).indicatorColor,
+                  BlendMode.srcATop,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

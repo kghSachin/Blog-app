@@ -56,15 +56,15 @@ ThemeData myLightTheme = ThemeData.light(
   textTheme: TextTheme(
     displayLarge: TextStyle(
       color: Colors.black,
-      fontFamily: GoogleFonts.roboto().fontFamily,
+      fontFamily: GoogleFonts.nunito().fontFamily,
     ),
     displayMedium: TextStyle(
       color: Colors.black,
-      fontFamily: GoogleFonts.roboto().fontFamily,
+      fontFamily: GoogleFonts.nunito().fontFamily,
     ),
     displaySmall: TextStyle(
       color: Colors.black,
-      fontFamily: GoogleFonts.roboto().fontFamily,
+      fontFamily: GoogleFonts.montserrat().fontFamily,
     ),
     headlineLarge: TextStyle(
       fontFamily: GoogleFonts.roboto().fontFamily,

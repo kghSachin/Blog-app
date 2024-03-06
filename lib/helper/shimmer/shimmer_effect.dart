@@ -36,6 +36,7 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
           physics: const NeverScrollableScrollPhysics(),
           children: [
             const SizedBox(height: 16),
+            const SizedBox(height: 36),
             _buildTopRowList(),
             const SizedBox(height: 16),
             _buildListItem(),

@@ -150,7 +150,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     Material(
                       child: ListTile(
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushNamed("/edit_profile");
+                        },
                         title: const Text("My Profile"),
                         leading: const Icon(Icons.person),
                         trailing: const Icon(
@@ -184,7 +186,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     Material(
                       child: ListTile(
                         tileColor: Theme.of(context).scaffoldBackgroundColor,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushNamed("/notification");
+                        },
                         title: const Text("Notifications"),
                         leading: const Icon(
                           Icons.notifications_active_outlined,
@@ -481,6 +485,17 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     height: 24,
                   ),
                   ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil("/login", (route) => false);
+                    },
+                    child: const SizedBox(
+                        width: double.maxFinite,
+                        child: Center(child: Text("Logout"))),
+                  ),
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -490,16 +505,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   ),
                   const SizedBox(
                     height: 6,
-                  ),
-                  ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const SizedBox(
-                        width: double.maxFinite,
-                        child: Center(child: Text("Logout"))),
                   ),
                 ],
               ),

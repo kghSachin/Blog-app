@@ -72,9 +72,9 @@ class UpcomingCard extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   color: Theme.of(context).indicatorColor.withOpacity(0.8),
                   fontWeight: FontWeight.w600,
-                  letterSpacing: 0.2,
-                  height: 1.2,
-                  fontFamily: GoogleFonts.roboto().fontFamily,
+                  letterSpacing: -0.2,
+                  height: 1.1,
+                  fontFamily: GoogleFonts.montserrat().fontFamily,
                 ),
           ),
           const SizedBox(

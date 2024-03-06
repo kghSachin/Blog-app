@@ -21,7 +21,7 @@ ThemeData myDarkTheme = ThemeData.dark(
         ),
       ),
       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-      overlayColor: MaterialStateProperty.all<Color>(Colors.black),
+      // overlayColor: MaterialStateProperty.all<Color>(Colors.black),
       backgroundColor:
           MaterialStateProperty.all<Color>(const Color(0xFF464F60)),
       // MaterialStateProperty.all<Color>(Color.fromARGB(255, 118, 20, 44)),
@@ -36,7 +36,9 @@ ThemeData myDarkTheme = ThemeData.dark(
       fontFamily: GoogleFonts.roboto().fontFamily,
     ),
     displaySmall: TextStyle(
-      fontFamily: GoogleFonts.roboto().fontFamily,
+      letterSpacing: 0.1,
+      fontWeight: FontWeight.w600,
+      fontFamily: GoogleFonts.montserrat().fontFamily,
     ),
     headlineLarge: TextStyle(
       fontFamily: GoogleFonts.roboto().fontFamily,
@@ -99,7 +101,7 @@ ThemeData myDarkTheme = ThemeData.dark(
         size: 30,
         color: Colors.white,
       )),
-  splashColor: Colors.black.withOpacity(0.5),
+  // splashColor: Colors.black.withOpacity(0.5),
 
   listTileTheme: const ListTileThemeData(style: ListTileStyle.list),
   // rgba(9, 15, 32, 1)

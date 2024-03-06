@@ -10,8 +10,6 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   late final PageController _pageController;
-  var _height;
-  var _width;
   int selectedVal = 0;
   bool onLastPage = false;
   @override
