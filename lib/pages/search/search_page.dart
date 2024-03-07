@@ -18,36 +18,38 @@ class _SearchPageState extends ConsumerState<SearchPage> {
       appBar: AppBar(
         title: const Text("Search"),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: size.height / 12,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: SearchBar(
-              onChanged: (value) {},
-              leading: const Padding(
-                padding: EdgeInsets.only(left: 8),
-                child: Icon(
-                  Icons.search_outlined,
-                  color: Colors.grey,
-                  size: 28,
-                ),
-              ),
-              hintText: "Start typing to search...",
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height / 12,
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Divider(
-            height: 40,
-            thickness: 1.5,
-            color: Theme.of(context).indicatorColor.withOpacity(0.2),
-          ),
-          const SearchEmptyScreen()
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: SearchBar(
+                onChanged: (value) {},
+                leading: const Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Icon(
+                    Icons.search_outlined,
+                    color: Colors.grey,
+                    size: 28,
+                  ),
+                ),
+                hintText: "Start typing to search...",
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Divider(
+              height: 40,
+              thickness: 1.5,
+              color: Theme.of(context).indicatorColor.withOpacity(0.2),
+            ),
+            const SearchEmptyScreen()
+          ],
+        ),
       ),
     );
   }
