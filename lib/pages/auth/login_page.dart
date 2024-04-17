@@ -1,4 +1,6 @@
 import 'package:chiya_startup/pages/auth/register_page.dart';
+import 'package:chiya_startup/server/authentication/authenticator.dart';
+import 'package:chiya_startup/server/enum/auth_enum.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
@@ -10,6 +12,23 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   bool _isObscure = true;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +104,7 @@ class _LogInState extends State<LogIn> {
                             height: 10,
                           ),
                           TextField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(Icons.email_outlined),
                                 hintText: "Enter your email",
@@ -107,6 +127,7 @@ class _LogInState extends State<LogIn> {
                             height: 10,
                           ),
                           TextField(
+                            controller: _passwordController,
                             obscureText: _isObscure,
                             decoration: InputDecoration(
                                 suffixIcon: IconButton(
@@ -145,8 +166,19 @@ class _LogInState extends State<LogIn> {
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5)))),
-                                onPressed: () {
-                                  Navigator.pushReplacementNamed(context, "/");
+                                onPressed: () async {
+                                  SignInResult result = await const Authenticator()
+                                      .login(_emailController.text,
+                                          _passwordController.text);
+
+                                  if (result == SignInResult.success) {
+                                    Navigator.of(context).pushNamed("/home");
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Invalid email or password")));
+                                  }
                                 },
                                 child: const Text("Login",
                                     style: TextStyle(
