@@ -1,11 +1,6 @@
-enum SignUpResult{
+enum AuthResult {
   success,
   emailAlreadyInUse,
-  failed,
-}
-
-enum SignInResult{
-  success,
   userNotFound,
   wrongPassword,
   failed,

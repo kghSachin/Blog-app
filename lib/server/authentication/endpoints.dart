@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String login = 'http://' + '192.168.56.1:8000/api/login';
+  static const String login = 'http://192.168.56.1:8000/api/login';
   static const String logout = 'http://192.168.56.1:8000/api/logout';
   static const String register = 'http://192.168.56.1:8000/api/register';
   static const String forgotPassword =

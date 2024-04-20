@@ -1,7 +1,9 @@
 import 'package:chiya_startup/pages/auth/register_page.dart';
 import 'package:chiya_startup/server/authentication/authenticator.dart';
 import 'package:chiya_startup/server/enum/auth_enum.dart';
+import 'package:chiya_startup/state/providers/auth_state_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -158,32 +160,28 @@ class _LogInState extends State<LogIn> {
                           const SizedBox(
                             height: 40,
                           ),
-                          SizedBox(
-                            height: 50,
-                            width: MediaQuery.of(context).size.width,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5)))),
-                                onPressed: () async {
-                                  SignInResult result = await const Authenticator()
-                                      .login(_emailController.text,
-                                          _passwordController.text);
-
-                                  if (result == SignInResult.success) {
-                                    Navigator.of(context).pushNamed("/home");
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                            content: Text(
-                                                "Invalid email or password")));
-                                  }
-                                },
-                                child: const Text("Login",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold))),
+                          Consumer(
+                            builder: (context, ref, child) {
+                              return SizedBox(
+                                height: 50,
+                                width: MediaQuery.of(context).size.width,
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5)))),
+                                    onPressed: () async {
+                                      ref
+                                          .read(authStateProvider.notifier)
+                                          .login(_emailController.text,
+                                              _passwordController.text);
+                                    },
+                                    child: const Text("Login",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold))),
+                              );
+                            },
                           ),
                           const SizedBox(
                             height: 20,

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:chiya_startup/components/loading/loading_screen_controller.dart';
-import 'package:chiya_startup/constant/loadin_strings.dart';
 import 'package:flutter/material.dart';
 
 class LoadingScreen {
@@ -10,7 +9,7 @@ class LoadingScreen {
   LoadingScreenController? _controller;
   void show({
     required BuildContext context,
-    String text = LoadingString.loading,
+    String text = "Loading ...",
   }) {
     if (_controller?.update(text) ?? false) {
       return;
@@ -32,20 +31,22 @@ class LoadingScreen {
     required String text,
   }) {
     final state = Overlay.of(context);
-
+    if (state == null) {
+      return null;
+    }
     final textController = StreamController<String>();
     textController.add(text);
-    final renderBox = context.findRenderObject() as RenderBox;
-    final size = renderBox.size;
+    // final renderBox = context.findRenderObject() as RenderBox;
+    // final size = 300;
     final overlay = OverlayEntry(builder: (context) {
       return Material(
         color: Colors.black.withAlpha(150),
         child: Center(
           child: Container(
             constraints: BoxConstraints(
-              maxHeight: size.height * 0.8,
-              maxWidth: size.width * 0.8,
-              minWidth: size.width * 0.5,
+              maxHeight: 200,
+              maxWidth: 200,
+              minWidth: 200,
             ),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -61,9 +62,7 @@ class LoadingScreen {
                     const SizedBox(
                       height: 10,
                     ),
-                    const CircularProgressIndicator(
-                      
-                    ),
+                    const CircularProgressIndicator(),
                     const SizedBox(
                       height: 20,
                     ),
