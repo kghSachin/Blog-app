@@ -7,5 +7,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final isLoadingProvider = Provider<bool>((ref) {
   final authResult = ref.watch(authStateProvider);
-  return false;
+  return authResult.isLoading;
 });

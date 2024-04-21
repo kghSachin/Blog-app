@@ -1,4 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:chiya_startup/server/enum/auth_enum.dart';
+import 'package:chiya_startup/state/providers/auth_state_provider.dart';
+import 'package:chiya_startup/state/providers/is_loading_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -9,6 +15,25 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool _isObscure = true;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  late final TextEditingController _usernameController;
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _usernameController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _usernameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 10,
                         ),
                         TextField(
+                          controller: _emailController,
                           decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.email_outlined),
                               hintText: "Enter your email",
@@ -97,6 +123,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 8,
                         ),
                         TextField(
+                          controller: _usernameController,
                           decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.email_outlined),
                               hintText: "Enter your username",
@@ -119,6 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 8,
                         ),
                         TextField(
+                          controller: _passwordController,
                           obscureText: _isObscure,
                           decoration: InputDecoration(
                               suffixIcon: IconButton(
@@ -188,19 +216,45 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 40,
                         ),
                         SizedBox(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(5)))),
-                              onPressed: () {},
-                              child: const Text("Sign Up",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold))),
-                        ),
+                            height: 50,
+                            width: MediaQuery.of(context).size.width,
+                            child: Consumer(
+                              builder: (context, ref, child) {
+                                final isLoading = ref.watch(isLoadingProvider);
+                                return ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5)))),
+                                    onPressed: () async {
+                                      final result = await ref
+                                          .read(authStateProvider.notifier)
+                                          .register(
+                                              _emailController.text,
+                                              _passwordController.text,
+                                              _usernameController.text);
+                                      if (mounted) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(result.message),
+                                        ));
+                                      }
+                                      if (mounted) {
+                                        if (result == AuthResult.success) {
+                                          Navigator.pop(context);
+                                        }
+                                      }
+                                    },
+                                    child: isLoading
+                                        ? const CircularProgressIndicator(
+                                            color: Colors.white,
+                                          )
+                                        : const Text("Sign Up",
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold)));
+                              },
+                            )),
                         const SizedBox(
                           height: 20,
                         ),

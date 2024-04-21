@@ -1,4 +1,5 @@
 import 'package:chiya_startup/server/authentication/authenticator.dart';
+import 'package:chiya_startup/server/enum/auth_enum.dart';
 import 'package:chiya_startup/state/models/auth_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,13 +7,25 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   final _authenticator = const Authenticator();
   AuthStateNotifier() : super(AuthState.unknown());
 
-  Future<void> login(String email, String password) async {
+  Future<AuthResult> login(String email, String password) async {
     state = state.copyWith(isLoading: true);
     final result = await _authenticator.login(email, password);
     state = state.copyWith(
       authResult: result,
       isLoading: false,
     );
+    return result;
+  }
+
+  Future<AuthResult> register(
+      String email, String password, String username) async {
+    state = state.copyWith(isLoading: true);
+    final result = await _authenticator.register(email, password, username);
+    state = state.copyWith(
+      authResult: result,
+      isLoading: false,
+    );
+    return result;
   }
 }
 

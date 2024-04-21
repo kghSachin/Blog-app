@@ -1,7 +1,8 @@
 import 'package:chiya_startup/pages/auth/register_page.dart';
-import 'package:chiya_startup/server/authentication/authenticator.dart';
+import 'package:chiya_startup/pages/home/home_page.dart';
 import 'package:chiya_startup/server/enum/auth_enum.dart';
 import 'package:chiya_startup/state/providers/auth_state_provider.dart';
+import 'package:chiya_startup/state/providers/is_loading_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -166,20 +167,48 @@ class _LogInState extends State<LogIn> {
                                 height: 50,
                                 width: MediaQuery.of(context).size.width,
                                 child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5)))),
-                                    onPressed: () async {
-                                      ref
-                                          .read(authStateProvider.notifier)
-                                          .login(_emailController.text,
-                                              _passwordController.text);
+                                  style: ElevatedButton.styleFrom(
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)))),
+                                  onPressed: () async {
+                                    final result = await ref
+                                        .read(authStateProvider.notifier)
+                                        .login(_emailController.text,
+                                            _passwordController.text);
+                                    if (mounted) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text(result.message)));
+                                    }
+                                    if (result == AuthResult.success) {
+                                      if (!mounted) {
+                                        return;
+                                      } else {
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    const HomePage()),
+                                            (route) => false);
+                                      }
+                                    }
+                                  },
+                                  child: Consumer(
+                                    builder: (context, ref, child) {
+                                      final isLoading =
+                                          ref.watch(isLoadingProvider);
+                                      return isLoading
+                                          ? const CircularProgressIndicator(
+                                              color: Colors.white,
+                                            )
+                                          : const Text("Login",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold));
                                     },
-                                    child: const Text("Login",
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold))),
+                                  ),
+                                ),
                               );
                             },
                           ),

@@ -1,5 +1,4 @@
 import 'package:chiya_startup/components/loading/loading_screen.dart';
-import 'package:chiya_startup/helper/error/error_screen.dart';
 import 'package:chiya_startup/key/test_key.dart';
 import 'package:chiya_startup/pages/auth/login_page.dart';
 import 'package:chiya_startup/pages/auth/register_page.dart';
@@ -57,17 +56,6 @@ class MyApp extends ConsumerWidget {
             theme: themeMode == true ? myDarkTheme : myLightTheme,
             home: Consumer(
               builder: (BuildContext context, ref, child) {
-                final isLoading = ref.watch(isLoadingProvider);
-                // ref.listen<bool>(isLoadingProvider, (previous, next) {
-                //   if (next != true) {
-                //     LoadingScreen.instance().show(context: context);
-                //   } else {
-                //     LoadingScreen.instance().hide();
-                //   }
-                // });
-                if (!isLoading) {
-                  LoadingScreen.instance().show(context: context);
-                }
                 return const MainPage();
               },
             ));
